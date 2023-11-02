@@ -170,3 +170,4 @@ function draw() {
       
 }
 
+console.log("Hello, world");
