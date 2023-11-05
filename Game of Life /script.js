@@ -170,4 +170,36 @@ function draw() {
       
 }
 
-console.log("Hello, world");
+// console.log("Hello, world");
+
+
+
+// let student = {
+//         name: "Suzi",
+//         age: 14,
+//         isTUMOstudent: true,
+       
+//         showInfo(){
+//                 console.log(this.name, this.age, this.isTUMOstudent);
+//         }
+        
+// }
+
+//console.log(student.name);
+// student.showInfo();
+
+// var obj = {
+//         "first_name": "Vartan",
+//         "last_name": "Hovsepyan",
+//         "age": 13,
+//         "tumo_student": false
+// }
+
+// let result
+
+
+// let erexa = new Child("Artur", 18, "male");
+// erexa.jump();
+// erexa.speak();
+// erexa.walk();
+// console.log(erexa.name, erexa.gen);
