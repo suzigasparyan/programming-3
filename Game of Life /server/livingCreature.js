@@ -1,7 +1,7 @@
-class Fire {
-    constructor(x, y) {
-        this.y = y;
+module.exports = class LivingCreature{
+    constructor(x, y){
         this.x = x;
+        this.y = y;
         this.multiply = 0;
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -13,7 +13,6 @@ class Fire {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
-
     }
 
     chooseCell(character) {
@@ -32,22 +31,4 @@ class Fire {
 
     }
 
-    mul(){
-        this.multiply++
-        let emptyCells = this.chooseCell(0);
-        let newCell = random(emptyCells);
-
-
-          if(newCell && this.multiply >= 8){
-            let newX = newCell[0];
-            let newY = newCell[1];
-            matrix[newY][newX] = 4;
-
-            let gr = new Fire(newX, newY);
-            fireArray.push(gr);
-
-            this.multiply = 0;
-          }
-    }
 }
-    

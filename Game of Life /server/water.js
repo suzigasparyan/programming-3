@@ -1,7 +1,9 @@
-class GrassEater extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Water extends LivingCreature{
     constructor(x, y) {
         super(x, y);
-        this.energy = 8
+        this.energy = 5
     }
 
     getNewCordinates() {
@@ -32,10 +34,10 @@ class GrassEater extends LivingCreature{
             let newX = newCell[0]
             let newY = newCell[1]
 
-            matrix[newY][newX] = 2
+            matrix[newY][newX] = 5
 
-            let grEat = new GrassEater(newX, newY)
-            grassEaterArr.push(grEat)
+            let water = new Water(newX, newY)
+            waterArray.push(water)
 
 
 
@@ -52,21 +54,21 @@ class GrassEater extends LivingCreature{
             let newX = food[0]
             let newY = food[1]
 
-            for (let i in grassArray) {
-                if (newX == grassArray[i].x && newY == grassArray[i].y) {
-                    grassArray.splice(i, 1)
+            for (let i in fireArray) {
+                if (newX == fireArray[i].x && newY == fireArray[i].y) {
+                    fireArray.splice(i, 1)
                     break;
                 }
             }
 
-            matrix[newY][newX] = 2
+            matrix[newY][newX] = 5
 
             matrix[this.y][this.x] = 0
 
             this.x = newX
             this.y = newY
 
-            if (this.energy >= 12) {
+            if (this.energy >= 10) {
                 this.mul()
             }
 
@@ -87,7 +89,7 @@ class GrassEater extends LivingCreature{
             let newY = newCell[1];
 
 
-            matrix[newY][newX] = 2;
+            matrix[newY][newX] = 5;
             matrix[this.y][this.x] = 0;
 
             this.x = newX;
@@ -103,16 +105,12 @@ class GrassEater extends LivingCreature{
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in grassEaterArr) {
-            if (this.x == grassEaterArr[i].x && this.y == grassEaterArr[i].y) {
-                grassEaterArr.splice(i, 1);
+        for (let i in waterArray) {
+            if (this.x == waterArray[i].x && this.y == waterArray[i].y) {
+                waterArray.splice(i, 1);
                 break;
             }
         }
     }
-
-
-
-
-
 }
+

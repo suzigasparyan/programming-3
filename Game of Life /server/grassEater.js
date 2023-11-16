@@ -1,9 +1,9 @@
-class Predator {
-    constructor (x, y){
-        this.x = x;
-        this.y = y;
-        this.energy = 8;
-        this.direction = [];
+let LivingCreature = require('./LivingCreature')
+
+module.exports =  class GrassEater extends LivingCreature{
+    constructor(x, y) {
+        super(x, y);
+        this.energy = 8
     }
 
     getNewCordinates() {
@@ -20,21 +20,9 @@ class Predator {
 
     }
 
-    chooseCell(character, character1) {
+    chooseCell(character) {
         this.getNewCordinates()
-        var found = [];
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character || matrix[y][x] == character1) {
-                    found.push(this.directions[i]);
-                } 
-            }
-
-        }
-        return found;
-
+        return super.chooseCell(character)
     }
 
     mul() {
@@ -46,10 +34,10 @@ class Predator {
             let newX = newCell[0]
             let newY = newCell[1]
 
-            matrix[newY][newX] = 3
+            matrix[newY][newX] = 2
 
-            let pred = new Predator(newX, newY)
-            predatorArray.push(pred)
+            let grEat = new GrassEater(newX, newY)
+            grassEaterArr.push(grEat)
 
 
 
@@ -57,7 +45,7 @@ class Predator {
     }
 
     eat() {
-        let foods = this.chooseCell(1, 2)
+        let foods = this.chooseCell(1)
         let food = random(foods)
 
         if (food) {
@@ -72,14 +60,8 @@ class Predator {
                     break;
                 }
             }
-            for (let i in grassEaterArr) {
-                if (newX == grassEaterArr[i].x && newY == grassEaterArr[i].y) {
-                    grassEaterArr.splice(i, 1)
-                    break;
-                }
-            }
 
-            matrix[newY][newX] = 3
+            matrix[newY][newX] = 2
 
             matrix[this.y][this.x] = 0
 
@@ -107,7 +89,7 @@ class Predator {
             let newY = newCell[1];
 
 
-            matrix[newY][newX] = 3;
+            matrix[newY][newX] = 2;
             matrix[this.y][this.x] = 0;
 
             this.x = newX;
@@ -123,14 +105,12 @@ class Predator {
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in predatorArray) {
-            if (this.x == predatorArray[i].x && this.y == predatorArray[i].y) {
-                predatorArray.splice(i, 1);
+        for (let i in grassEaterArr) {
+            if (this.x == grassEaterArr[i].x && this.y == grassEaterArr[i].y) {
+                grassEaterArr.splice(i, 1);
                 break;
             }
         }
     }
 
-
 }
-
