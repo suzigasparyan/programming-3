@@ -5,7 +5,7 @@ module.exports = class Fire extends LivingCreature{
     mul(){
         this.multiply++
         let emptyCells = super.chooseCell(0);
-        let newCell = random(emptyCells);
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
 
           if(newCell && this.multiply >= 8){
